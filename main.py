@@ -1,7 +1,7 @@
 import discord
 import random
 from discord import app_commands
-
+from discord.ext import commands
 
 class rpgshop(discord.Client):
     def __init__(self):
@@ -27,8 +27,66 @@ bot = rpgshop()
     dado="Número de faces no dado:"
 )
 async def d(interaction: discord.Interaction, dado: int):
+    command_prefix="$",
     result = random.randint(1, dado)
     await interaction.response.send_message(f"{result}")
+
+@bot.tree.command(name="d20", description="Rolar um dado d20")
+async def d20(interaction: discord.Interaction):
+    command_prefix="$",
+    result = random.randint(1, 20)
+    if result == 20 or result == 1:
+        await interaction.response.send_message(f"` {result} ` ⟵ [**{result}**] 1d20")
+    else:
+        await interaction.response.send_message(f"` {result} ` ⟵ [{result}] 1d20")
+
+@bot.tree.command(name="d4", description="Rolar um dado d4")
+async def d4(interaction: discord.Interaction):
+    result = random.randint(1, 4)
+    if result == 4 or result == 1:
+        await interaction.response.send_message(f"` {result} ` ⟵ [**{result}**] 1d20")
+    else:
+        await interaction.response.send_message(f"` {result} ` ⟵ [{result}] 1d20")
+
+@bot.tree.command(name="d6", description="Rolar um dado d6")
+async def d6(interaction: discord.Interaction):
+    result = random.randint(1, 6)
+    if result == 6 or result == 1:
+        await interaction.response.send_message(f"` {result} ` ⟵ [**{result}**] 1d20")
+    else:
+        await interaction.response.send_message(f"` {result} ` ⟵ [{result}] 1d20")
+
+@bot.tree.command(name="d8", description="Rolar um dado d8")
+async def d8(interaction: discord.Interaction):
+    result = random.randint(1, 8)
+    if result == 8 or result == 1:
+        await interaction.response.send_message(f"` {result} ` ⟵ [**{result}**] 1d20")
+    else:
+        await interaction.response.send_message(f"` {result} ` ⟵ [{result}] 1d20")
+
+@bot.tree.command(name="d10", description="Rolar um dado d10")
+async def d(interaction: discord.Interaction):
+    result = random.randint(1, 10)
+    if result == 10 or result == 1:
+        await interaction.response.send_message(f"` {result} ` ⟵ [**{result}**] 1d20")
+    else:
+        await interaction.response.send_message(f"` {result} ` ⟵ [{result}] 1d20")
+
+@bot.tree.command(name="d12", description="Rolar um dado d12")
+async def d(interaction: discord.Interaction):
+    result = random.randint(1, 12)
+    if result == 12 or result == 1:
+        await interaction.response.send_message(f"` {result} ` ⟵ [**{result}**] 1d20")
+    else:
+        await interaction.response.send_message(f"` {result} ` ⟵ [{result}] 1d20")
+
+@bot.tree.command(name="d100", description="Rolar um dado d100")
+async def d(interaction: discord.Interaction):
+    result = random.randint(1, 100)
+    if result == 100 or result == 1:
+        await interaction.response.send_message(f"` {result} ` ⟵ [**{result}**] 1d20")
+    else:
+        await interaction.response.send_message(f"` {result} ` ⟵ [{result}] 1d20")
 
 
 @bot.tree.command(name="promoloja", description="Exibe um item de cada categoria que está em promoção no momento")
@@ -120,87 +178,87 @@ async def promoloja(interaction: discord.Interaction):
                "# <:offhand:1368082104784523414>\n## [015] ÉGIDE ASTRAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **Recebe +8 RD com o custo de reduzir sua mana máxima em 20 pontos.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **350 <:prata:1367912689829154897>"
                ]
     gpricearray = [15,25,30,30,30,45,35,30,40,35,75,40,85,100,120,110,120,200,175,200,150,145,220,150,15,25,50,50,15,35,30,50,30,35,75,40,120,175,200,275,180,220,175,250,225,300,220,200,260,240,300,250,300,350,325,275,400,300,375,420,425,400,380,440,400,500,110,190,180,295,320,245,160,250,210,300,210,215,260,240,300]
-    garray = ["# <:garment:1368085243206176879>\n## [001] CAPUZ DE MERCENÁRIO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **15 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [002] CAPUZ DE CAÇADOR \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **25 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [003] CAPUZ DE ASSASSINO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **30 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [004] CAPUZ REAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **30 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [005] CAPOTE DE ERUDITO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **30 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [006] CAPOTE DE CLÉRIGO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **45 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [007] CAPOTE DE MAGO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **35 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [008] CAPOTE REAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **30 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [009] ELMO DE SOLDADO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **40 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [010] ELMO DE CAVALEIRO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **35 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [011] ELMO DE GUARDIÃO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **75 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [012] ELMO REAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **40 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [013] CASACO DE MERCENÁRIO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **85 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [014] CASACO DE CAÇADOR \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: *100 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [015] CASACO DE ASSASSINO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **120 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [016] CASACO REAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **110 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [017] ROBE DE ERUDITO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **120 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [018] ROBE DE CLÉRIGO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **200 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [019] ROBE DE MAGO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **175 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [020] ROBE REAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **200 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [021] ARMADURA DE SOLDADO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **150 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [022] ARMADURA DE CAVALEIRO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: *145 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [023] ARMADURA DE GUARDIÃO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **220 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [024] ARMADURA REAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **150 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [025] SAPATOS DE MERCENÁRIO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **15 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [026] SAPATOS DE CAÇADOR \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **25 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [027] SAPATOS DE ASSASSINO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **50 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [028] SAPATOS REAIS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **50 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [029] SANDÁLIAS DE ERUDITO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **15 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [030] SANDÁLIAS DE CLÉRIGO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **35 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [031] SANDÁLIAS DE MAGO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **30 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [032] SANDÁLIAS REAIS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **50 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [033] BOTAS DE SOLDADO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **30 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [034] BOTAS DE CAVALEIRO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **35 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [035] BOTAS DE GUARDIÃO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **75 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [036] BOTAS REAIS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **40 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [037] CAPUZ DE ESPREITADOR \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **120 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [038] CAPUZ INFERIAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **175 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [039] CAPUZ ESPECTRAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **200 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [040] CAPUZ DE ANDARILHO DA NÉVOA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **275 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [041] CAPUZ DA TENACIDADE \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **180 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [042] CAPOTE DE DRUIDA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **220 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [043] CAPOTE MALÉVOLO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **175 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [044] CAPOTE SECTÁRIO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **250 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [045] CAPOTE FEÉRICO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **225 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [046] CAPOTE DA PUREZA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **300 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [047] ELMO DE GUARDA-TUMBAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **220 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [048] ELMO DEMÔNIO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **200 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [049] ELMO JUDICANTE \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **260 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [050] ELMO DE TECELÃO DO CREPÚSCULO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **240 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [051] ELMO DA BRAVURA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **300 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [052] CASACO DE ESPREITADOR \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **250 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [053] CASACO INFERIAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **300 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [054] CASACO ESPECTRAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **350 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [055] CASACO DE ANDARILHO DA NÉVOA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **325 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [056] CASACO DA TENACIDADE \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **275 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [057] ROBE DE DRUIDA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **400 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [058] ROBE MALÉVOLO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **300 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [059] ROBE SECTÁRIO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **375 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [060] ROBE FEÉRICO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **420 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [061] ROBE DA PUREZA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **425 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [062] ARMADURA DE GUARDA-TUMBAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **400 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [063] ARMADURA DEMÔNIA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **380 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [064] ARMADURA JUDICANTE \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **440 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [065] ARMADURA DE TECELÃO DO CREPÚSCULO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **400 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [066] ARMADURA DA BRAVURA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **500 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [067] SAPATOS DE ESPREITADOR \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **110 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [068] SAPATOS INFERIAIS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **190 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [069] SAPATOS ESPECTRAIS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **180 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [070] SAPATOS DE ANDARILHO DA NÉVOA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **295 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [071] SAPATOS DA TENACIDADE \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **320 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [072] SANDÁLIAS DE DRUIDA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **245 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [073] SANDÁLIAS MALÉVOLAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **160 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [074] SANDÁLIAS SECTÁRIAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **250 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [075] SANDÁLIAS FEÉRICAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **210 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [076] SANDÁLIAS DA PUREZA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **300 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [077] BOTAS DE GUARDA-TUMBAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **210 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [078] BOTAS DEMÔNIAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **215 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [079] BOTAS JUDICANTES \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **260 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [080] BOTAS DE TECELÃO DO CREPÚSCULO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **240 <:prata:1367912689829154897>",
-               "# <:garment:1368085243206176879>\n## [081] BOTAS DA BRAVURA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **300 <:prata:1367912689829154897>"
+    garray = ["# <:garment:1368085243206176879>\n## [001] CAPUZ DE MERCENÁRIO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +1 de dano com armas leves.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **15 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [002] CAPUZ DE CAÇADOR \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +1 de acerto com armas de longa distância.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **25 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [003] CAPUZ DE ASSASSINO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +1 na perícia Furtividade.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **30 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [004] CAPUZ REAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +1 na perícia Acrobacia.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **30 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [005] CAPOTE DE ERUDITO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +3 PdM.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **30 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [006] CAPOTE DE CLÉRIGO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +3 de dano com armas pesadas.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **45 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [007] CAPOTE DE MAGO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +3 de dano com armas de mago.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **35 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [008] CAPOTE REAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +1 Redução de custo de mana.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **30 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [009] ELMO DE SOLDADO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +2 PV.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **40 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [010] ELMO DE CAVALEIRO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +1 de dano em ataques básicos.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **35 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [011] ELMO DE GUARDIÃO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **75 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [012] ELMO REAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e reflete 1 de dano nos inimigos que atingirem você.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **40 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [013] CASACO DE MERCENÁRIO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +2 de dano com armas leves.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **85 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [014] CASACO DE CAÇADOR \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +2 de acerto com armas de longa distância.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: *100 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [015] CASACO DE ASSASSINO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +1 na perícia Furtividade.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **120 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [016] CASACO REAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +1 na perícia Acrobacia.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **110 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [017] ROBE DE ERUDITO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +5 PdM.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **120 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [018] ROBE DE CLÉRIGO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +5 de dano com armas pesadas.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **200 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [019] ROBE DE MAGO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +5 de dano com armas de mago.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **175 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [020] ROBE REAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +2 Redução de custo de mana.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **200 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [021] ARMADURA DE SOLDADO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e recebe +5 PV.\n**ᴘᴇꜱᴏ: **3\n**ᴘʀᴇçᴏ: **150 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [022] ARMADURA DE CAVALEIRO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e recebe +2 de dano em ataques básicos.\n**ᴘᴇꜱᴏ: **3\n**ᴘʀᴇçᴏ: *145 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [023] ARMADURA DE GUARDIÃO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+4 CA.\n**ᴘᴇꜱᴏ: **3\n**ᴘʀᴇçᴏ: **220 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [024] ARMADURA REAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e reflete 2 de dano nos inimigos que atingirem você.\n**ᴘᴇꜱᴏ: **3\n**ᴘʀᴇçᴏ: **150 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [025] SAPATOS DE MERCENÁRIO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +1 de dano com armas leves.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **15 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [026] SAPATOS DE CAÇADOR \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +1 de acerto com armas de longa distância.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **25 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [027] SAPATOS DE ASSASSINO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +2 na perícia Furtividade.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **50 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [028] SAPATOS REAIS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +2 na perícia Acrobacia.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **50 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [029] SANDÁLIAS DE ERUDITO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +1 PdM.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **15 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [030] SANDÁLIAS DE CLÉRIGO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +2 de dano com armas pesadas.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **35 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [031] SANDÁLIAS DE MAGO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +2 de dano com armas de mago.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **30 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [032] SANDÁLIAS REAIS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +2 Redução de custo de energia.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **50 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [033] BOTAS DE SOLDADO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +1 PV.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **30 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [034] BOTAS DE CAVALEIRO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +1 de dano em ataques básicos.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **35 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [035] BOTAS DE GUARDIÃO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **75 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [036] BOTAS REAIS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e reflete 1 de dano nos inimigos que atingirem você.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **40 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [037] CAPUZ DE ESPREITADOR \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +3 de dano com armas de mão principal [M].\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **120 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [038] CAPUZ INFERIAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +2 na perícia Furtividade.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **175 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [039] CAPUZ ESPECTRAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +2 de roubo de vida.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **200 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [040] CAPUZ DE ANDARILHO DA NÉVOA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +4 na perícia Furtividade.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **275 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [041] CAPUZ DA TENACIDADE \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +1.5m de deslocamento.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **180 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [042] CAPOTE DE DRUIDA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +1 na perícia Cura.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **220 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [043] CAPOTE MALÉVOLO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e reflete 2 de dano em inimigos.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **175 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [044] CAPOTE SECTÁRIO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e todas as curas recebidas aumentam igual a metade de sua proficiência.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **250 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [045] CAPOTE FEÉRICO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +3 Redução de custo de mana\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **225 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [046] CAPOTE DA PUREZA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e aumenta a eficiência de curas igual a metade a sua proficiência.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **300 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [047] ELMO DE GUARDA-TUMBAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e +5 PV.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **220 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [048] ELMO DEMÔNIO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e recebe +3 de dano em ataques básicos.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **200 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [049] ELMO JUDICANTE \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e recebe +2 RD.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **260 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [050] ELMO DE TECELÃO DO CREPÚSCULO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e aumenta a duração dos efeitos “Lento” e “Imóvel” em uma rodada.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **240 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [051] ELMO DA BRAVURA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+4 CA.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **300 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [052] CASACO DE ESPREITADOR \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e recebe +5 de dano com armas de mão principal [M].\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **250 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [053] CASACO INFERIAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e recebe +3 na perícia Furtividade.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **300 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [054] CASACO ESPECTRAL \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e recebe +4 de roubo de vida.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **350 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [055] CASACO DE ANDARILHO DA NÉVOA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +5 na perícia Furtividade.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **325 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [056] CASACO DA TENACIDADE \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e recebe +1.5m de deslocamento.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **275 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [057] ROBE DE DRUIDA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e recebe +3 na perícia Cura.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **400 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [058] ROBE MALÉVOLO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e reflete 4 de dano em inimigos.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **300 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [059] ROBE SECTÁRIO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e todas as curas recebidas aumentam igual a metade de sua proficiência.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **375 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [060] ROBE FEÉRICO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e recebe +5 Redução de custo de mana\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **420 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [061] ROBE DA PUREZA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e aumenta a eficiência de curas igual a metade de sua proficiência.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **425 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [062] ARMADURA DE GUARDA-TUMBAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+4 CA e +10 PV.\n**ᴘᴇꜱᴏ: **3\n**ᴘʀᴇçᴏ: **400 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [063] ARMADURA DEMÔNIA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+4 CA e recebe +5 de dano em ataques básicos.\n**ᴘᴇꜱᴏ: **3\n**ᴘʀᴇçᴏ: **380 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [064] ARMADURA JUDICANTE \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+4 CA e recebe +4 RD.\n**ᴘᴇꜱᴏ: **3\n**ᴘʀᴇçᴏ: **440 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [065] ARMADURA DE TECELÃO DO CREPÚSCULO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e aumenta a duração dos efeitos “Lento” e “Imóvel” em uma rodada.\n**ᴘᴇꜱᴏ: **3\n**ᴘʀᴇçᴏ: **400 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [066] ARMADURA DA BRAVURA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+5 CA.\n**ᴘᴇꜱᴏ: **3\n**ᴘʀᴇçᴏ: **500 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [067] SAPATOS DE ESPREITADOR \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +2 de dano com armas de mão principal [M].\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **110 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [068] SAPATOS INFERIAIS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +3 na perícia Furtividade.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **190 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [069] SAPATOS ESPECTRAIS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +1 de roubo de vida.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **180 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [070] SAPATOS DE ANDARILHO DA NÉVOA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e recebe +5 na perícia Furtividade.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **295 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [071] SAPATOS DA TENACIDADE \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +3m de deslocamento.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **320 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [072] SANDÁLIAS DE DRUIDA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +2 na perícia Cura.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **245 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [073] SANDÁLIAS MALÉVOLAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e reflete 1 de dano em inimigos.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **160 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [074] SANDÁLIAS SECTÁRIAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e todas as curas recebidas aumentam igual a metade de sua proficiência.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **250 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [075] SANDÁLIAS FEÉRICAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+2 CA e recebe +2 Redução de custo de mana\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **210 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [076] SANDÁLIAS DA PUREZA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e aumenta a eficiência de curas equivalente a sua proficiência.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **300 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [077] BOTAS DE GUARDA-TUMBAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e +4 PV.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **210 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [078] BOTAS DEMÔNIAS \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e recebe +4 de dano em ataques básicos.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **215 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [079] BOTAS JUDICANTES \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+3 CA e recebe +2 RD.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **260 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [080] BOTAS DE TECELÃO DO CREPÚSCULO \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+1 CA e aumenta a duração dos efeitos “Lento” e “Imóvel” em uma rodada.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **240 <:prata:1367912689829154897>",
+               "# <:garment:1368085243206176879>\n## [081] BOTAS DA BRAVURA \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[P]\n**ᴅᴇꜱᴄʀɪçãᴏ: **+4 CA.\n**ᴘᴇꜱᴏ: **2\n**ᴘʀᴇçᴏ: **300 <:prata:1367912689829154897>"
                ]
     acpricearray = [200,300,450,350,400,525,525,800,1500,1050,1200,850,650,100,200,400,300,2500,400,500,500,500,500,500,500]
     acarray = ["# <:accessory:1368312932349251665>\n## [001] BRACELETE-IMÃ \n**ᴘʀᴏᴘʀɪᴇᴅᴀᴅᴇꜱ: **[L]\n**ᴅᴇꜱᴄʀɪçãᴏ: **Ao lançar uma arma de arremesso, o usuário pode, ao final da rodada seguinte, invocá-la de volta à sua mão como uma ação extra — não sendo necessário buscá-la fisicamente. A recuperação ocorre mesmo que a arma esteja fora do campo de visão, desde que não esteja presa ou destruída.\n**ᴘᴇꜱᴏ: **1\n**ᴘʀᴇçᴏ: **200 <:prata:1367912689829154897>",
